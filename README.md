@@ -31,4 +31,4 @@ TO DO:
 * `extend the new app SSR pages`
 * `extend` documentation.
 
-[NamPost](https://www.nampost.com.na/images/logo.png)
+![NamPost](https://www.nampost.com.na/images/logo.png)
