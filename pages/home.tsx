@@ -3,6 +3,7 @@ import ContentTransition from "../src/layouts/ContentTransition";
 import Stats from "../src/components/Stats";
 import Transactions from "../src/components/Transactions";
 import PlainAlert from "../src/components/alerts/PlainAlert";
+import TableCheckBoxes from "../src/components/TableCheckboxes";
 export default function Home() {
     return (
         <>
@@ -14,6 +15,9 @@ export default function Home() {
                         </div>
                         <div className="py-4">
                             <Transactions />
+                        </div>
+                        <div className="py-4">
+                            <TableCheckBoxes />
                         </div>
                         {/* Replace with your content */}
                         <div className="py-4">

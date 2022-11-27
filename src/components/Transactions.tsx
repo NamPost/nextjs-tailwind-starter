@@ -1,3 +1,4 @@
+import { useFlyoutFromRight } from "../hooks/useFlyoutFromRight";
 const transactionsList = [
     {
         id: "AAPS0L",
@@ -112,6 +113,7 @@ const transactionsList = [
 ];
 
 export default function Transactions() {
+    const {flyoutOpen, openMenu} = useFlyoutFromRight();
     return (
         <div className="">
             <div className="sm:flex sm:items-center">
@@ -127,6 +129,7 @@ export default function Transactions() {
                 <div className="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
                     <button
                         type="button"
+                        onClick={() => openMenu(true)}
                         className="inline-flex items-center justify-center rounded-md border border-transparent bg-primary px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto"
                     >
                         Export

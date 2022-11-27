@@ -1,3 +1,5 @@
+![NamPost](https://www.nampost.com.na/images/logo.png)
+
 # NamPost Next JS Starter 
 
 This is a a NamPost starter template for projects based on NextJS 13, Tailwind CSS, React Query, Next-Auth and Jotai state management.
@@ -31,4 +33,3 @@ TO DO:
 * `extend the new app SSR pages`
 * `extend` documentation.
 
-![NamPost](https://www.nampost.com.na/images/logo.png)

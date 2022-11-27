@@ -24,7 +24,7 @@ export default function PlainAlert() {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <div className="pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-white dark:bg-darklight dark:text-gray-100 shadow-lg ring-1 dark:border-black ring-black ring-opacity-5">
+            <div className="pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-white dark:bg-black dark:text-gray-100 shadow-lg ring-1 dark:border-darklight ring-black ring-opacity-5">
               <div className="p-4">
                 <div className="flex items-center">
                   <div className="flex w-0 flex-1 justify-between">
