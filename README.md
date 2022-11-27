@@ -28,5 +28,7 @@ TO DO:
 * `useFlyout` hook
 * `React Query Mutations`
 * `housekeeping` finalize page templates.
+* `extend the new app SSR pages`
 * `extend` documentation.
 
+[NamPost](https://www.nampost.com.na/images/logo.png)
