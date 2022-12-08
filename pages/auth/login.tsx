@@ -1,71 +1,105 @@
-import {Transition} from "@headlessui/react";
+import { Transition } from "@headlessui/react";
 import Link from "next/link";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
+import { useAtom } from "jotai";
+import { urlState } from "../../src/state/appState";
+import { login } from "../../src/utils/crud";
+import { ToastContainer, Slide } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 export default function Login() {
-    const [showLoginBox, setShowLoginBox] = useState(false);
-    const [showText, setShowText] = useState(false);
+  const [showLoginBox, setShowLoginBox] = useState(false);
+  const [showText, setShowText] = useState(false);
+  const [username, setUsername] = useState();
+  const [password, setPassword] = useState();
+  const [userUrl, setUserUrl] = useAtom(urlState);
 
-    useEffect(() => {
-        setTimeout(() => {
-            setShowLoginBox(true);
-        }, 500);
+  useEffect(() => {
+    setTimeout(() => {
+      setShowLoginBox(true);
+    }, 500);
 
-        setTimeout(() => {
-            setShowText(true);
-        }, 800);
-    }, []);
+    setTimeout(() => {
+      setShowText(true);
+    }, 800);
+  }, []);
+  const usernameHandler = (e: any) => {
+    e.preventDefault();
+    setUsername(e.target.value);
+  };
+  const passwordHandler = (e: any) => {
+    e.preventDefault();
+    setPassword(e.target.value);
+  };
+  const submitHandler = (e: any) => {
+    e.preventDefault();
+    login(userUrl, { username: username, password: password });
+  };
 
-    return (
-        <div
-            className="w-full
+  return (
+    // <>
+    <div
+      className="w-full
               h-screen
               bg-gradient-to-r
               from-red-900
               via-blue-900
               to-red-700
               background-animate"
-        >
-            <div className="flex min-h-full">
-                <div className="flex flex-1 flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
-                    <Transition
-                        show={showLoginBox}
-                        enter="transition ease-in-out duration-150 transform"
-                        enterFrom="translate-y-full"
-                        enterTo="translate-y-0"
-                        leave="transition ease-in-out duration-150 transform"
-                        leaveFrom="translate-y-0"
-                        leaveTo="-translate-y-full"
+    >
+      <ToastContainer
+        position="top-right"
+        autoClose={1500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        transition={Slide}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+      <div className="flex min-h-full">
+        <div className="flex flex-1 flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
+          <Transition
+            show={showLoginBox}
+            enter="transition ease-in-out duration-150 transform"
+            enterFrom="translate-y-full"
+            enterTo="translate-y-0"
+            leave="transition ease-in-out duration-150 transform"
+            leaveFrom="translate-y-0"
+            leaveTo="-translate-y-full"
 
-                        // enter="transform transition ease-in duration-[300ms]"
-                        // enterFrom="opacity-0 translate-y-1 scale-50"
-                        // enterTo="opacity-100 translate-y-0 duration-150"
-                        // leave="transition ease-in duration-150"
-                        // leaveFrom="opacity-100 translate-y-0"
-                        // leaveTo="opacity-0 translate-y-1 "
-                    >
-                        <Transition.Child
-                            enter="transition ease-in-out duration-150 transform"
-                            enterFrom="translate-y-full"
-                            enterTo="translate-y-0"
-                            leave="transition ease-in-out duration-150 transform"
-                            leaveFrom="translate-y-0"
-                            leaveTo="-translate-y-full"
-                        >
-                            <div className="mx-auto w-full max-w-sm lg:w-96 bg-white p-8 rounded-sm shadow-lg">
-                                <div>
-                                    <img
-                                        className="h-12 w-auto"
-                                        src="/logo_blue.png"
-                                        alt="Your Company"
-                                    />
-                                    <h2 className="mt-6 text-2xl font-bold tracking-tight text-gray-600">
-                                        Sign in to your account
-                                    </h2>
-                                    <p className="mt-2 text-sm text-gray-600"></p>
-                                </div>
+            // enter="transform transition ease-in duration-[300ms]"
+            // enterFrom="opacity-0 translate-y-1 scale-50"
+            // enterTo="opacity-100 translate-y-0 duration-150"
+            // leave="transition ease-in duration-150"
+            // leaveFrom="opacity-100 translate-y-0"
+            // leaveTo="opacity-0 translate-y-1 "
+          >
+            <Transition.Child
+              enter="transition ease-in-out duration-150 transform"
+              enterFrom="translate-y-full"
+              enterTo="translate-y-0"
+              leave="transition ease-in-out duration-150 transform"
+              leaveFrom="translate-y-0"
+              leaveTo="-translate-y-full"
+            >
+              <div className="mx-auto w-full max-w-sm lg:w-96 bg-white p-8 rounded-sm shadow-lg">
+                <div>
+                  <img
+                    className="h-12 w-auto"
+                    src="/logo_blue.png"
+                    alt="Your Company"
+                  />
+                  <h2 className="mt-6 text-2xl font-bold tracking-tight text-gray-600">
+                    Sign in to your account
+                  </h2>
+                  <p className="mt-2 text-sm text-gray-600"></p>
+                </div>
 
-                                <div className="mt-8">
-                                    <div>
+                <div className="mt-8">
+                  {/* <div>
                                         <div>
                                             <p className="text-sm font-medium text-gray-700">
                                                 Sign in with
@@ -153,132 +187,135 @@ export default function Login() {
                                                 </span>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> */}
 
-                                    <div className="mt-6">
-                                        <form
-                                            action="#"
-                                            method="POST"
-                                            className="space-y-6"
-                                        >
-                                            <div>
-                                                <label
-                                                    htmlFor="email"
-                                                    className="block text-sm font-medium text-gray-700"
-                                                >
-                                                    Email address
-                                                </label>
-                                                <div className="mt-1">
-                                                    <input
-                                                        id="email"
-                                                        name="email"
-                                                        type="email"
-                                                        autoComplete="email"
-                                                        required
-                                                        className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-                                                    />
-                                                </div>
-                                            </div>
-
-                                            <div className="space-y-1">
-                                                <label
-                                                    htmlFor="password"
-                                                    className="block text-sm font-medium text-gray-700"
-                                                >
-                                                    Password
-                                                </label>
-                                                <div className="mt-1">
-                                                    <input
-                                                        id="password"
-                                                        name="password"
-                                                        type="password"
-                                                        autoComplete="current-password"
-                                                        required
-                                                        className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-                                                    />
-                                                </div>
-                                            </div>
-
-                                            <div className="flex items-center justify-between">
-                                                <div className="flex items-center">
-                                                    <input
-                                                        id="remember-me"
-                                                        name="remember-me"
-                                                        type="checkbox"
-                                                        className="h-4 w-4 rounded border-gray-300 text-primary focus:ring-indigo-500"
-                                                    />
-                                                    <label
-                                                        htmlFor="remember-me"
-                                                        className="ml-2 block text-sm text-gray-900"
-                                                    >
-                                                        Remember me
-                                                    </label>
-                                                </div>
-
-                                                <div className="text-sm">
-                                                    <a
-                                                        href="#"
-                                                        className="font-medium text-primary hover:text-indigo-500"
-                                                    >
-                                                        Forgot your password?
-                                                    </a>
-                                                </div>
-                                            </div>
-
-                                            <div>
-                                                <button
-                                                    type="submit"
-                                                    className="flex w-full justify-center rounded-md border border-transparent bg-primary py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                                                >
-                                                    Sign in
-                                                </button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </Transition.Child>
-                    </Transition>
-                </div>
-                <Transition
-                    show={showText}
-                    enter="transition-opacity duration-300 duration-[300ms]"
-                    enterFrom="opacity-0"
-                    enterTo="opacity-100"
-                    leave="transition-opacity duration-500"
-                    leaveFrom="opacity-100"
-                    leaveTo="opacity-0 "
-                >
-                    <div className="relative hidden w-full flex-1 lg:flex align-middle justify-center h-screen   my-auto">
-                        <div className="flex h-full justify-center m-auto justify-items-center ">
-                            <div className="m-auto align-middle my-auto">
-                                <h1 className=" text-4xl text-white font-thin font-sans">
-                                    <span className=" font-black">EEFT</span>{" "}
-                                    Portal NamPost
-                                </h1>
-                                <h2 className="my-auto text-3xl text-white font-thin font-sans">
-                                    <span className=" font-black">Manage</span>{" "}
-                                    ENCR, EEFT and Namclear streams...
-                                </h2>
-                                <h2 className="my-auto text-3xl text-white font-thin font-sans">
-                                    <span className=" font-black">FINTeq</span>{" "}
-                                    payments hub and administration...
-                                </h2>
-                                <div>
-                                    <Link as="/home" href="/home">
-                                        <button
-                                            type="submit"
-                                            className="flex mt-5 justify-center rounded-md border border-transparent bg-transparent  border-white py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                                        >
-                                            Explore The Concept
-                                        </button>
-                                    </Link>
-                                </div>
-                            </div>
+                  <div className="mt-6">
+                    <form
+                      action="#"
+                      method="POST"
+                      className="space-y-6"
+                      onSubmit={submitHandler}
+                    >
+                      <div>
+                        <label
+                          htmlFor="username"
+                          className="block text-sm font-medium text-gray-700"
+                        >
+                          Username
+                        </label>
+                        <div className="mt-1">
+                          <input
+                            id="username"
+                            name="username"
+                            type="text"
+                            autoComplete="username"
+                            required
+                            onChange={usernameHandler}
+                            className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                          />
                         </div>
-                    </div>
-                </Transition>
-            </div>
+                      </div>
+
+                      <div className="space-y-1">
+                        <label
+                          htmlFor="password"
+                          className="block text-sm font-medium text-gray-700"
+                        >
+                          Password
+                        </label>
+                        <div className="mt-1">
+                          <input
+                            id="password"
+                            name="password"
+                            type="password"
+                            autoComplete="current-password"
+                            required
+                            onChange={passwordHandler}
+                            className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                          />
+                        </div>
+                      </div>
+
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center">
+                          <input
+                            id="remember-me"
+                            name="remember-me"
+                            type="checkbox"
+                            className="h-4 w-4 rounded border-gray-300 text-primary focus:ring-indigo-500"
+                          />
+                          <label
+                            htmlFor="remember-me"
+                            className="ml-2 block text-sm text-gray-900"
+                          >
+                            Remember me
+                          </label>
+                        </div>
+
+                        <div className="text-sm">
+                          <a
+                            href="#"
+                            className="font-medium text-primary hover:text-indigo-500"
+                          >
+                            Forgot your password?
+                          </a>
+                        </div>
+                      </div>
+
+                      <div>
+                        <button
+                          type="submit"
+                          className="flex w-full justify-center rounded-md border border-transparent bg-primary py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                        >
+                          Sign in
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </Transition.Child>
+          </Transition>
         </div>
-    );
+        <Transition
+          show={showText}
+          enter="transition-opacity duration-300 duration-[300ms]"
+          enterFrom="opacity-0"
+          enterTo="opacity-100"
+          leave="transition-opacity duration-500"
+          leaveFrom="opacity-100"
+          leaveTo="opacity-0 "
+        >
+          <div className="relative hidden w-full flex-1 lg:flex align-middle justify-center h-screen   my-auto">
+            <div className="flex h-full justify-center m-auto justify-items-center ">
+              <div className="m-auto align-middle my-auto">
+                <h1 className=" text-4xl text-white font-thin font-sans">
+                  <span className=" font-black">EEFT</span> Portal NamPost
+                </h1>
+                <h2 className="my-auto text-3xl text-white font-thin font-sans">
+                  <span className=" font-black">Manage</span> ENCR, EEFT and
+                  Namclear streams...
+                </h2>
+                <h2 className="my-auto text-3xl text-white font-thin font-sans">
+                  <span className=" font-black">FINTeq</span> payments hub and
+                  administration...
+                </h2>
+                <div>
+                  <Link as="/home" href="/home">
+                    <button
+                      type="submit"
+                      className="flex mt-5 justify-center rounded-md border border-transparent bg-transparent  border-white py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                    >
+                      Explore The Concept
+                    </button>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Transition>
+      </div>
+    </div>
+    // </>
+  );
 }
