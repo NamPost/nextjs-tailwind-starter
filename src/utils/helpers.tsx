@@ -1,4 +1,5 @@
 import { toast } from "react-toastify";
+import jwt from "jsonwebtoken";
 
 export const errorHandler = (err: Error) => {
   switch (err.code) {
@@ -17,6 +18,11 @@ export const errorHandler = (err: Error) => {
       console.log(err);
     }
   }
+};
+
+export const fetchRole = () => {
+  const user = jwt.decode(localStorage.getItem("auth")).user;
+  return user.role;
 };
 
 interface Error {
