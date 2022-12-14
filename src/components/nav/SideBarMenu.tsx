@@ -11,7 +11,7 @@ export default function SideBarMenu() {
 
     // }, []);
     return (
-        <div>
+        <div role="sidebar">
             <Transition
                 as={Fragment}
                 show={showSideBarMenu}

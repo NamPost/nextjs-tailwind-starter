@@ -8,7 +8,7 @@ import {
     LockClosedIcon
 } from "@heroicons/react/24/outline";
 export const navigationItems = [
-    {name: "Dashboard", href: "/home", icon: HomeIcon, current: true, count: null},
+    {name: "Dashboard", href: "home", icon: HomeIcon, current: true, count: null},
     {
         name: "Template Page",
         href: "about",
@@ -26,14 +26,14 @@ export const navigationItems = [
     },
     {
         name: "With Badge",
-        href: "/home",
+        href: "home",
         icon: InboxIcon,
         current: false,
         count: 15,
     },
     {
         name: "Spare",
-        href: "/home",
+        href: "home",
         icon: ChartBarIcon,
         current: false,
         count: null,

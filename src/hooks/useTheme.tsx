@@ -25,7 +25,7 @@ export const useTheme = () => {
             browserTheme = "light";
             document.documentElement.classList.remove("dark");
         }
-        console.log("useTheme useEffect", browserTheme);
+        //console.log("useTheme useEffect", browserTheme);
         toggleTheme(browserTheme);
     }, []);
 
@@ -41,7 +41,7 @@ export const useTheme = () => {
     };
 
     const handleChange = (event: Boolean) => {
-        console.log(event);
+        //console.log(event);
         toggleTheme(event ? "dark" : "light");
     };
 

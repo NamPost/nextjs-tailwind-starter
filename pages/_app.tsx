@@ -7,23 +7,33 @@ import {ReactQueryDevtoolsPanel} from "@tanstack/react-query-devtools";
 import {SideBarMenuSlider} from "../src/hooks/useMenu";
 import {FlyoutFromRight} from "../src/hooks/useFlyoutFromRight";
 import Head from "next/head";
+//Alert Hook
+import { AlertContainer } from "../src/hooks/useAlert";
+
+
 //React Query Client
 const queryClient = new QueryClient();
 export default function App({
     Component,
     pageProps: {session, ...pageProps},
 }: AppProps) {
+    
     return (
         <SessionProvider session={session}>
             <QueryClientProvider client={queryClient}>
                 <Suspense fallback={<div>Loading...</div>}>
                     <Head>
                         <title>Next - Tailwind Starter</title>
-                        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+                        <meta
+                            name="viewport"
+                            content="initial-scale=1.0, width=device-width"
+                        />
                     </Head>
                     <SideBarMenuSlider />
                     <FlyoutFromRight />
                     <Component {...pageProps} />
+                    
+                    <AlertContainer />
                 </Suspense>
                 {/* <ReactQueryDevtoolsPanel
                 className=""

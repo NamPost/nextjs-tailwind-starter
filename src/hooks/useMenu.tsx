@@ -17,11 +17,11 @@ export const useMenu = () => {
 
     /* Initial useEffect to handle flyout menu */
     useEffect(() => {
-        console.log("useMenu useEffect: ", sidebarOpen);
+        //console.log("useMenu useEffect: ", sidebarOpen);
     }, []);
 
     const openMenu = (open: any) => {
-        console.log("Open Menu Action", open);
+        //console.log("Open Menu Action", open);
         setSidebarOpen(open);
     };
 

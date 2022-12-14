@@ -23,6 +23,16 @@ npm run dev
 yarn dev
 ```
 
+By default the local server will run on port 3001 (http://localhost:3001). To change this, simply set the port env variable in the package.json.
+
+    "scripts": {
+        "dev": "next dev --port 3001",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint"
+    },
+
+
 TO DO:
 
 * `useAlert` hook

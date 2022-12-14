@@ -10,9 +10,9 @@ export default function PlainAlert() {
       {/* Global notification live region, render this permanently at the end of the document */}
       <div
         aria-live="assertive"
-        className="z-30 pointer-events-none fixed bottom-0 right-0 w-96 px-4 py-6 sm:items-start sm:p-6"
+        className="z-30 pointer-events-none fixed bottom-0 right-0 w-96 px-4 py-1 sm:items-start sm:p-6"
       >
-        <div className="flex w-full flex-col items-center space-y-4 sm:items-end">
+        <div className="flex w-full flex-col items-center space-y-1 sm:items-end">
           {/* Notification panel, dynamically insert this into the live region when it needs to be displayed */}
           <Transition
             show={show}

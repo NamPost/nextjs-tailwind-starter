@@ -2,9 +2,19 @@ import PageLayout1 from "../src/layouts/PageLayout1";
 import ContentTransition from "../src/layouts/ContentTransition";
 import Stats from "../src/components/Stats";
 import Transactions from "../src/components/Transactions";
-import PlainAlert from "../src/components/alerts/PlainAlert";
 import TableCheckBoxes from "../src/components/TableCheckboxes";
+//UseAuthentication Hook for Auth Pages
+import {useAuthentication} from "../src/hooks/useAuthentication";
+
+
 export default function Home() {
+    //Use Session Hook, Required on Authenticated Pages
+    const {session, status, accessScreen} = useAuthentication();
+
+    //Check if Session is active, if not redirect to login page
+    accessScreen();
+
+    //Is authenticated, show page
     return (
         <>
             <PageLayout1>
@@ -27,7 +37,6 @@ export default function Home() {
                     </div>
                 </ContentTransition>
             </PageLayout1>
-            <PlainAlert />
         </>
     );
 }

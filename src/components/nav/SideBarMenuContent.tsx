@@ -36,7 +36,7 @@ export default function SideBarMenuContent() {
                                     className={classNames(
                                         item.current
                                             ? "text-gray-500"
-                                            : "text-gray-400 group-hover:text-gray-500",
+                                            : "text-gray-400 group-hover:text-gray-500 ",
                                         "mr-4 flex-shrink-0 h-6 w-6"
                                     )}
                                     aria-hidden="true"
@@ -46,8 +46,8 @@ export default function SideBarMenuContent() {
                                     <span
                                         className={classNames(
                                             item.current
-                                                ? "bg-white"
-                                                : "bg-gray-100 group-hover:bg-gray-200  dark:bg-black",
+                                                ? "bg-white dark:bg-black dark:hover:bg-darklight dark:group-hover:bg-darklight"
+                                                : "bg-gray-100 group-hover:bg-gray-200  dark:bg-black dark:hover:bg-darklight dark:group-hover:bg-darklight",
                                             "ml-3 inline-block py-0.5 px-3 text-xs font-medium rounded-full"
                                         )}
                                     >
@@ -72,7 +72,7 @@ export default function SideBarMenuContent() {
                             <img
                                 className="inline-block h-9 w-9 rounded-full"
                                 src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                                alt=""
+                                alt="User Profile"
                             />
                         </div>
                         <div className="ml-3">
